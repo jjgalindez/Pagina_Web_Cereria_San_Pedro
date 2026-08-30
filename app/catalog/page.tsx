@@ -1,3 +1,4 @@
+import AppText from '@/components/ui/AppText';
 import React from 'react'
 
 const Catalog = () => {
@@ -5,38 +6,72 @@ const Catalog = () => {
   const products = [
     {
       id: 1,
-      name: "Velao 1",
-      description: "Aroma maracuya y canela",
+      name: "Vela 1",
+      description: "paquete x5",
       price: 10.99,
       image: "/assets/product1.png"
     },
     {
       id: 2,
       name: "Vela 2",
-      description: "Aroma lavanda y vainilla",
+      description: "paquete x4",
       price: 15.99,
       image: "/assets/product2.png"
+    },
+    {
+      id: 3,
+      name: "Vela 3",
+      description: "Paquete x6",
+      price: 12.99,
+      image: "/assets/product3.png"
+    },
+    {
+      id: 4,
+      name: "Vela 4",
+      description: "paquete x7",
+      price: 14.99,
+      image: "/assets/product4.png"
+    },
+    {
+      id: 5,
+      name: "Vela 5",
+      description: "paquete x10",
+      price: 14.99,
+      image: "/assets/product5.png"
+    },
+    {
+      id: 6,
+      name: "Vela 6",
+      description: "paquete x8",
+      price: 16.99,
+      image: "/assets/product6.png"
     }
   ];
 
   return (
-    <div>
+    <section>
       <div className='flex justify-center items-center py-16 '>
-        <h1 className='text-2xl font-bold text-blue-700'>Nuestro Catalogo</h1>
+        <AppText variant='h2' className=''>Nuestro Catalogo</AppText>
       </div>
-      
-      {/* Desarrollar tarjetas para colocar imagenes con descripcion de productos y un boton para agregar al carrito, tambien colocar cada cuadro pequeño de 3 por cada fila */}
-      
-        {products.map(product => (
-          <div key={product.id} className='border p-4 rounded shadow'>
-            <img src={product.image} alt={product.name} className='w-48 h-48 object-cover mb-4' />
-            <h2 className='text-lg font-bold'>{product.name}</h2>
-            <p className='text-gray-600'>{product.description}</p>
-            <p className='text-gray-800 font-semibold'>${product.price.toFixed(2)}</p>
-            <button className='mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600'>Agregar al carrito</button>
-          </div>
-        ))}
+      <div className='w-full px-6'>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+          {products.map(product => (
+            <div key={product.id} className='h-full flex flex-col shadow-md rounded-xl hover:-translate-1 transition'>
+              <div className='bg-gray-100 '>
+                <img src={product.image} alt={product.name} className='w-full aspect-square object-cover rounded-t-xl' />
+              </div>
+              <div className='flex flex-1 flex-col justify-between rounded-b-xl p-4 bg-white'>
+                <h2 className='text-lg font-bold'>{product.name}</h2>
+                <p className='text-gray-600'>Presentacion: {product.description}</p>
+                <p className='text-gray-800 font-semibold'>Precio: ${product.price.toFixed(2)}</p>
+                <button className='w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-4xl hover:bg-blue-600'>Ver Detalles</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+    </section>
   )
 }
 
