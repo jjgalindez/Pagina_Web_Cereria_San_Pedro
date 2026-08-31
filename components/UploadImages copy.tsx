@@ -4,19 +4,11 @@ import { supabase } from "@/lib/supabase";
 import { useRef, useState } from "react";
 
 
-
 const SupabaseUploader = () => {
     const imageInputRef = useRef<HTMLInputElement | null>(null);
     const [file, setFile] = useState<File | null>(null);
     const [imageUrl, setImageUrl] = useState<string>("");
     const [uploading, setUploading] = useState<boolean>(false);
-
-    const [formData, setFormData] = useState({
-        nombre: "",
-        descripcion: "",
-        unidad_paquete: 0,
-        precio: 0,
-    });
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -36,7 +28,7 @@ const SupabaseUploader = () => {
             const filePath = `subidas/${fileName}`;
 
             // 2. Subir el archivo al bucket "imagenes" de Supabase
-            const { error } = await supabase.storage
+            const { data, error } = await supabase.storage
                 .from("imagenes")
                 .upload(filePath, file);
 
@@ -44,29 +36,12 @@ const SupabaseUploader = () => {
                 throw error;
             }
 
+            // 3. Obtener la URL pública del archivo subido
             const { data: publicUrlData } = supabase.storage
                 .from("imagenes")
                 .getPublicUrl(filePath);
 
-            // 3. Subir datos a la tabla productos de Supabase desde input
-            const { data } = await supabase
-                .from("productos")
-                .insert([
-                    {
-                        nombre: formData.nombre,
-                        descripcion: formData.descripcion,
-                        unidad_paquete: formData.unidad_paquete,
-                        precio: formData.precio,
-                        imagen_url: publicUrlData.publicUrl
-                    }
-                ]);
-
-            if (error) {
-                throw error;
-            } else {
-                console.log("Datos insertados en la tabla productos:", data);
-            }
-
+            setImageUrl(publicUrlData.publicUrl);
         } catch (error) {
             console.error("Error al subir la imagen:", error);
             alert("Hubo un error al subir el archivo.");
@@ -77,34 +52,6 @@ const SupabaseUploader = () => {
 
     return (
         <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 border border-gray-200">
-            <input
-                type="text"
-                placeholder="Nombre del producto"
-                value={formData.nombre}
-                onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-                type="text"
-                placeholder="Descripción del producto"
-                value={formData.descripcion}
-                onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-                type="number"
-                placeholder="Unidades por paquete"
-                value={formData.unidad_paquete}
-                onChange={(e) => setFormData({ ...formData, unidad_paquete: parseInt(e.target.value) })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-            <input
-                type="number"
-                placeholder="Precio"
-                value={formData.precio}
-                onChange={(e) => setFormData({ ...formData, precio: parseFloat(e.target.value) })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
             <h2 className="text-xl font-bold text-gray-800">Subir a Supabase</h2>
 
             <input
