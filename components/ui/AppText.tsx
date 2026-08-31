@@ -13,7 +13,7 @@ const AppText = ({ variant = 'body', className, children, ...props }: AppTextPro
     const variants = {
         h1: 'text-3xl font-bold text-sky-700',
         h2: 'text-2xl font-bold ',
-        h3: 'text-xl font-medium',
+        h3: 'text-xl text-gray-800 font-medium',
         body: 'text-base',
         description: 'text-sm text-gray-600',
         small: 'text-xs text-gray-500'

@@ -78,9 +78,9 @@ const Catalog = async () => {
                 <Image src={product.imagen_url} alt={product.nombre} width={400} height={400} className='w-full aspect-square object-cover rounded-t-xl' />
               </div>
               <div className='flex flex-1 flex-col justify-between rounded-b-xl p-4 bg-white'>
-                <h2 className='text-lg font-bold'>{product.nombre}</h2>
-                <p className='text-gray-600'>Descripcion: {product.descripcion}</p>
-                <p className='text-gray-800'>Paquete de Unidades: {product.unidad_paquete}</p>
+                <AppText variant='h3' className=''>{product.nombre}</AppText>
+                <p className='text-gray-600'>Referencia: {product.descripcion}</p>
+                <p className='text-gray-800'>Unidad de paquete: {product.unidad_paquete}</p>
                 <p className='text-gray-800 font-semibold'>Precio: ${product.precio.toFixed(0)}</p>
                 <button className='w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-4xl hover:bg-blue-600'>Ver Detalles</button>
               </div>
