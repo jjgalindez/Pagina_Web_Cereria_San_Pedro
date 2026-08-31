@@ -3,7 +3,6 @@ import AppText from '@/components/ui/AppText';
 import React from 'react'
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
-import type { Product } from '@/types/product';
 
 const Catalog = async () => {
 

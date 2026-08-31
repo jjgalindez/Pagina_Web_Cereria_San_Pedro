@@ -1,14 +1,10 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
-import { useRef, useState } from "react";
-
-
+import { useState } from "react";
 
 const SupabaseUploader = () => {
-    const imageInputRef = useRef<HTMLInputElement | null>(null);
     const [file, setFile] = useState<File | null>(null);
-    const [imageUrl, setImageUrl] = useState<string>("");
     const [uploading, setUploading] = useState<boolean>(false);
 
     const [formData, setFormData] = useState({
@@ -49,7 +45,7 @@ const SupabaseUploader = () => {
                 .getPublicUrl(filePath);
 
             // 3. Subir datos a la tabla productos de Supabase desde input
-            const { data } = await supabase
+            const { data, error: insertError } = await supabase
                 .from("productos")
                 .insert([
                     {
@@ -61,8 +57,8 @@ const SupabaseUploader = () => {
                     }
                 ]);
 
-            if (error) {
-                throw error;
+            if (insertError) {
+                throw insertError;
             } else {
                 console.log("Datos insertados en la tabla productos:", data);
             }
@@ -121,22 +117,6 @@ const SupabaseUploader = () => {
             >
                 {uploading ? "Subiendo..." : "Subir Imagen"}
             </button>
-
-            {imageUrl && (
-                <div className="mt-4 border-t pt-4">
-                    <p className="text-sm text-emerald-600 font-medium">¡Subida con éxito!</p>
-                    <img src={imageUrl} alt="Subida con éxito" className="mt-2 w-full h-auto rounded-lg shadow" />
-                    <div className="mt-2">
-                        <span className="text-xs text-gray-500 font-semibold block mb-1">Enlace de la imagen:</span>
-                        <input
-                            readOnly
-                            value={imageUrl}
-                            onClick={(e) => (e.target as HTMLInputElement).select()}
-                            className="p-2 w-full text-xs bg-gray-100 rounded border cursor-pointer focus:outline-none"
-                        />
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
