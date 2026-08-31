@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
@@ -7,7 +8,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
           <div>
             <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
-              <img src="/assets/logo.png" alt="Logo" className="w-12 h-12" />
+              <Image
+                src="/assets/logo.png"
+                alt="Logo"
+                width={40}
+                height={40} />
               <h3 className="text-2xl font-black tracking-tight">CERERÍA SAN PEDRO</h3>
             </div>
             <p className="text-blue-100 mb-6">Productos de insuperable calidad elaborados con dedicación para iluminar cada uno de tus momentos.</p>
