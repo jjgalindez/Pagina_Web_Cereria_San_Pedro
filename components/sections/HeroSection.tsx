@@ -8,7 +8,7 @@ const HeroSection = () => {
 
             <div className='w-full h-full'>
                 <div className='relative min-h-screen'>
-                    <Image fill src="/assets/FondoHeroF.png" alt="Velas artesanales" />
+                    <Image fill src="/assets/Fondo.png" alt="Velas artesanales" />
                 </div>
 
 

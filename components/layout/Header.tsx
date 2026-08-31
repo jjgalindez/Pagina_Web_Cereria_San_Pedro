@@ -1,13 +1,13 @@
 // components/Header.tsx
 import React from 'react'
-import { IoCartOutline } from "react-icons/io5";
+import { IoCartOutline, IoPersonOutline } from "react-icons/io5";
 import Image from 'next/image';
 import Link from 'next/link';
 import AppText from '../ui/AppText';
 
 const Header = () => {
     return (
-        <header className='py-4 px-6 shadow'>
+        <header className='py-4 px-6 shadow bg-sky-100/70 backdrop-blur-md sticky top-0 z-50'>
 
             <div className='flex w-full max-w-7xl mx-auto justify-between items-center'>
                 <div className='flex items-center gap-2'>
@@ -30,6 +30,9 @@ const Header = () => {
                     <button className='relative hover:text-blue-600'>
                         <IoCartOutline size={24} />
                     </button>
+                    <Link href="/admin/login" className='relative pl-10 hover:text-blue-600' >
+                        <IoPersonOutline size={24} />
+                    </Link>
                 </div>
 
             </div>
