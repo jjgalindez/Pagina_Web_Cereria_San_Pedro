@@ -6,6 +6,7 @@ import { useState } from "react";
 const SupabaseUploader = () => {
     const [file, setFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
+    const [categories, setCategories] = useState<any[]>([]);
 
     const [formData, setFormData] = useState({
         nombre: "",
@@ -71,6 +72,21 @@ const SupabaseUploader = () => {
         }
     };
 
+    const getCategories = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('categorias')
+                .select('*');
+
+            if (error) {
+                throw error;
+            }
+            setCategories(data);
+        } catch (error) {
+            console.error("Error al obtener las categorías:", error);
+        }
+    }
+
     return (
         <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 border border-gray-200">
             <input
@@ -87,6 +103,20 @@ const SupabaseUploader = () => {
                 onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
                 className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
+            <select
+                value={formData.categoria}
+                onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}
+                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            >
+                <option value="">Seleccionar categoría</option>
+                {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                        {category.nombre}
+                    </option>
+                ))}
+            </select>
+
+            <h2>Unidades de paquetes</h2>
             <input
                 type="number"
                 placeholder="Unidades por paquete"
@@ -94,6 +124,7 @@ const SupabaseUploader = () => {
                 onChange={(e) => setFormData({ ...formData, unidad_paquete: parseInt(e.target.value) })}
                 className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
+            <h2>Precio</h2>
             <input
                 type="number"
                 placeholder="Precio"
