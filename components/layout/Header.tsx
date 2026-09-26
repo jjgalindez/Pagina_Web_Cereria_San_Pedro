@@ -12,7 +12,7 @@ const Header = () => {
             <div className='flex w-full max-w-7xl mx-auto justify-between items-center'>
                 <div className='flex items-center gap-2'>
                     <Link href="/" className='flex items-center gap-2'>
-                        <Image src="/assets/logo.png" alt="Logo" width={50} height={50} />
+                        <Image src="/assets/logo1.png" alt="Logo" width={50} height={50} />
                         <div>
                             <AppText variant='h1' className='font-title'>Cerería</AppText>
                             <AppText variant='h1' className='font-title'>San Pedro</AppText>

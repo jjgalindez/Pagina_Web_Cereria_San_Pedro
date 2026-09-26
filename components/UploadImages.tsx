@@ -1,7 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SupabaseUploader = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -13,6 +13,7 @@ const SupabaseUploader = () => {
         descripcion: "",
         unidad_paquete: 0,
         precio: 0,
+        categoria_id: "",
     });
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +55,16 @@ const SupabaseUploader = () => {
                         descripcion: formData.descripcion,
                         unidad_paquete: formData.unidad_paquete,
                         precio: formData.precio,
+                        categoria_id: formData.categoria_id,
                         imagen_url: publicUrlData.publicUrl
                     }
                 ]);
 
             if (insertError) {
+                alert("Hubo un error al insertar los datos.");
                 throw insertError;
             } else {
+                alert("Archivo subido y datos insertados correctamente.");
                 console.log("Datos insertados en la tabla productos:", data);
             }
 
@@ -73,19 +77,29 @@ const SupabaseUploader = () => {
     };
 
     const getCategories = async () => {
+        console.log("1. Ejecutando categorias")
         try {
             const { data, error } = await supabase
                 .from('categorias')
                 .select('*');
 
+                console.log("2. Datos categorias: ", data)
+                 console.log("3. Error categorías:", error);
+
             if (error) {
                 throw error;
             }
             setCategories(data);
+            
         } catch (error) {
             console.error("Error al obtener las categorías:", error);
         }
     }
+
+    useEffect(() => {
+    getCategories();
+}, []);
+
 
     return (
         <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 border border-gray-200">
@@ -103,17 +117,23 @@ const SupabaseUploader = () => {
                 onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
                 className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
-            <select
-                value={formData.categoria}
-                onChange={(e) => setFormData({ ...formData, categoria: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            <select 
+            value={formData.categoria_id}
+            onChange={(e) =>
+                setFormData({
+                    ...formData,
+                    categoria_id: e.target.value
+                })
+            }
+            className="border border-gray-300 rounded-md py-2 px-2"
             >
-                <option value="">Seleccionar categoría</option>
+                <option value="">Seleccionar categoria</option>
                 {categories.map((category) => (
                     <option key={category.id} value={category.id}>
                         {category.nombre}
                     </option>
                 ))}
+
             </select>
 
             <h2>Unidades de paquetes</h2>
@@ -146,7 +166,7 @@ const SupabaseUploader = () => {
                 disabled={!file || uploading}
                 className="w-full bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium"
             >
-                {uploading ? "Subiendo..." : "Subir Imagen"}
+                {uploading ? "Subiendo..." : "Subir Producto"}
             </button>
         </div>
     );

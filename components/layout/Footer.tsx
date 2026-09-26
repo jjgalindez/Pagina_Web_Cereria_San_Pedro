@@ -20,7 +20,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
               <Image
-                src="/assets/logo.png"
+                src="/assets/logo1.png"
                 alt="Logo de Cerería San Pedro"
                 width={70}
                 height={70}
