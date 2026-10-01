@@ -8,10 +8,6 @@ export default function Home() {
   return (
     <main className="">
       <HeroSection />
-
-      <div className="flex min-h-screen flex-col items-center justify-between p-24">
-        <UploadImages />
-      </div>
     </main>
   );
 }

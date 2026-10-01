@@ -67,7 +67,7 @@ const Catalog = async () => {
   return (
     <section>
       <div className='flex justify-center items-center py-16 '>
-        <AppText variant='h2' className=''>Nuestro Catalogo</AppText>
+        <AppText variant='h2' className=''>Nuestro Catálogo</AppText>
       </div>
       <div className='w-full px-6'>
 
@@ -80,6 +80,7 @@ const Catalog = async () => {
               <div className='flex flex-1 flex-col justify-between rounded-b-xl p-4 bg-white'>
                 <AppText variant='h3' className=''>{product.nombre}</AppText>
                 <p className='text-gray-600'>Referencia: {product.descripcion}</p>
+                <p className='text-gray-800'>Presentación: {product.presentacion}</p>
                 <p className='text-gray-800'>Unidad de paquete: {product.unidad_paquete}</p>
                 <p className='text-gray-800 font-semibold'>Precio: ${product.precio.toFixed(0)}</p>
                 <button className='w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-4xl hover:bg-blue-600'>Ver Detalles</button>

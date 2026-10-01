@@ -11,6 +11,7 @@ const SupabaseUploader = () => {
     const [formData, setFormData] = useState({
         nombre: "",
         descripcion: "",
+        presentacion: "",
         unidad_paquete: 0,
         precio: 0,
         categoria_id: "",
@@ -53,6 +54,7 @@ const SupabaseUploader = () => {
                     {
                         nombre: formData.nombre,
                         descripcion: formData.descripcion,
+                        presentacion: formData.presentacion,
                         unidad_paquete: formData.unidad_paquete,
                         precio: formData.precio,
                         categoria_id: formData.categoria_id,
@@ -117,6 +119,7 @@ const SupabaseUploader = () => {
                 onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
                 className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
+            
             <select 
             value={formData.categoria_id}
             onChange={(e) =>
@@ -135,6 +138,15 @@ const SupabaseUploader = () => {
                 ))}
 
             </select>
+
+            <h2>Presentación</h2>
+            <input
+                type="text"
+                placeholder="Presentación"
+                value={formData.presentacion}
+                onChange={(e) => setFormData({ ...formData, presentacion: e.target.value })}
+                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+            />
 
             <h2>Unidades de paquetes</h2>
             <input
