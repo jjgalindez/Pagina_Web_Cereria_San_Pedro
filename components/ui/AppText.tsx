@@ -15,7 +15,7 @@ const AppText = ({ variant = 'body', className, children, ...props }: AppTextPro
         h2: 'text-2xl font-bold text-black/90',
         h3: 'text-xl text-black/85 font-bold',
         body: 'text-base',
-        description: 'text-sm text-gray-600',
+        description: 'text-lg font-medium text-black/95',
         small: 'text-xs text-gray-500'
 
     }
