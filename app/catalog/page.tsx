@@ -3,6 +3,7 @@ import AppText from '@/components/ui/AppText';
 import React from 'react'
 import Image from 'next/image';
 import { supabase } from '@/lib/supabase';
+import Link from 'next/link';
 
 const Catalog = async () => {
 
@@ -83,7 +84,7 @@ const Catalog = async () => {
                 <p className='text-gray-800'>Presentación: {product.presentacion}</p>
                 <p className='text-gray-800'>Unidad de paquete: {product.unidad_paquete}</p>
                 <p className='text-gray-800 font-semibold'>Precio: ${product.precio.toFixed(0)}</p>
-                <button className='w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-4xl hover:bg-blue-600'>Ver Detalles</button>
+                <Link href={`/product/${product.id}`} className='w-full mt-4 px-4 py-2 bg-blue-500 text-white text-center rounded-4xl hover:bg-blue-600'>Ver Detalles</Link>
               </div>
             </div>
           ))}
