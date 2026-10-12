@@ -33,7 +33,6 @@ const HeroSection = () => {
                 fill
                 priority
                 sizes="100vw"
-                quality={85}
                 alt=""
                 className='object-cover object-[65%_center] md:object-[70%_center] -z-20'
             />
