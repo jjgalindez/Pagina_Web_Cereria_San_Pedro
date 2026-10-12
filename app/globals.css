@@ -109,6 +109,12 @@ body {
 
 @layer components {
 
+  .container-shell {
+    width: min(100%, var(--container-content));
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
   .nav-link {
     @apply inline-flex min-h-11 items-center px-3 py-2
       text-sand-800
