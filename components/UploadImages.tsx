@@ -1,9 +1,13 @@
 "use client";
 
-import { supabase } from "@/lib/supabase";
+
+import { createClient } from "@/lib/supabase/client";
 import { useState, useEffect } from "react";
 
 const SupabaseUploader = () => {
+
+    const supabase = createClient();
+
     const [file, setFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
     const [categories, setCategories] = useState<any[]>([]);
@@ -85,22 +89,22 @@ const SupabaseUploader = () => {
                 .from('categorias')
                 .select('*');
 
-                console.log("2. Datos categorias: ", data)
-                 console.log("3. Error categorías:", error);
+            console.log("2. Datos categorias: ", data)
+            console.log("3. Error categorías:", error);
 
             if (error) {
                 throw error;
             }
             setCategories(data);
-            
+
         } catch (error) {
             console.error("Error al obtener las categorías:", error);
         }
     }
 
     useEffect(() => {
-    getCategories();
-}, []);
+        getCategories();
+    }, []);
 
 
     return (
@@ -119,16 +123,16 @@ const SupabaseUploader = () => {
                 onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
                 className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
-            
-            <select 
-            value={formData.categoria_id}
-            onChange={(e) =>
-                setFormData({
-                    ...formData,
-                    categoria_id: e.target.value
-                })
-            }
-            className="border border-gray-300 rounded-md py-2 px-2"
+
+            <select
+                value={formData.categoria_id}
+                onChange={(e) =>
+                    setFormData({
+                        ...formData,
+                        categoria_id: e.target.value
+                    })
+                }
+                className="border border-gray-300 rounded-md py-2 px-2"
             >
                 <option value="">Seleccionar categoria</option>
                 {categories.map((category) => (

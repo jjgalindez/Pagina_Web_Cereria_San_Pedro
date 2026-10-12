@@ -30,7 +30,7 @@ const Header = () => {
                     <button className='relative hover:text-blue-600'>
                         <IoCartOutline size={24} />
                     </button>
-                    <Link href="/admin/login" className='relative pl-10 hover:text-blue-600' >
+                    <Link href="/login" className='relative pl-10 hover:text-blue-600' >
                         <IoPersonOutline size={24} />
                     </Link>
                 </div>

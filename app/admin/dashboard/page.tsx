@@ -1,12 +1,10 @@
-import UploadImages from '@/components/UploadImages'
+import Dashboard from '@/components/dashboard/Dashboard'
 import React from 'react'
 
-const Dashboard = () => {
+const DashboardScreen = () => {
     return (
-        <div className="flex min-h-screen flex-col items-center justify-between p-24">
-            <UploadImages />
-        </div>
+        < Dashboard />
     )
 }
 
-export default Dashboard
+export default DashboardScreen

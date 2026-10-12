@@ -2,10 +2,11 @@
 import AppText from '@/components/ui/AppText';
 import React from 'react'
 import Image from 'next/image';
-import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/client';
 
 const Catalog = async () => {
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('productos')
@@ -83,7 +84,7 @@ const Catalog = async () => {
                 <p className='text-gray-600'>Referencia: {product.descripcion}</p>
                 <p className='text-gray-800'>Presentación: {product.presentacion}</p>
                 <p className='text-gray-800'>Unidad de paquete: {product.unidad_paquete}</p>
-                <p className='text-gray-800 font-semibold'>Precio: ${product.precio.toFixed(0)}</p>
+                {/* <p className='text-gray-800 font-semibold'>Precio: ${product.precio.toFixed(0)}</p> */}
                 <Link href={`/product/${product.id}`} className='w-full mt-4 px-4 py-2 bg-blue-500 text-white text-center rounded-4xl hover:bg-blue-600'>Ver Detalles</Link>
               </div>
             </div>
