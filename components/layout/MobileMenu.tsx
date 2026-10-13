@@ -58,7 +58,7 @@ export default function MobileMenu() {
                         </Link>
                     ))}
                     <Link
-                        href="/admin/login"
+                        href="/login"
                         className="nav-link"
                         onClick={() => close(false)}
                     >

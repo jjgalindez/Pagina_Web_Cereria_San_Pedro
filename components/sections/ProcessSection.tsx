@@ -25,7 +25,7 @@ export default function ProcessSection() {
                     playsInline
                     preload="metadata"
                     className={styles.video}
-                    poster="/images/process-poster.webp"
+                    poster="/assets/Eventos.png"
                 >
                     <source src="/videos/video2.mp4" type="video/mp4" />
                 </video>
