@@ -1,13 +1,16 @@
 // app/page.tsx
-import Header from "@/components/layout/Header";
-import UploadImages from "@/components/UploadImages";
-import Image from "next/image";
+import FeaturesSection from '@/components/sections/FeaturesSection';
 import HeroSection from '../components/sections/HeroSection';
+import ProcessSection from '@/components/sections/ProcessSection';
+import CollectionSection from '@/components/sections/CollectionSection';
 
 export default function Home() {
   return (
     <main className="">
       <HeroSection />
+      <FeaturesSection />
+      <ProcessSection />
+      <CollectionSection />
     </main>
   );
 }
