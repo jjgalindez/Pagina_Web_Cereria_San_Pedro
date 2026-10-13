@@ -16,3 +16,19 @@ export const NAVIGATION = [
     { href: "/catalog", label: "Catálogo" },
     { href: "/contact", label: "Contacto" },
 ];
+
+export function getSiteUrl(): URL {
+    const value = process.env.SITE_URL;
+
+    if (!value) {
+        throw new Error("Falta SITE_URL: configura el origen público del sitio.");
+    }
+
+    const url = new URL(value);
+
+    if (!["http:", "https:"].includes(url.protocol)) {
+        throw new Error("SITE_URL debe usar HTTP o HTTPS.");
+    }
+
+    return new URL(url.origin);
+}
