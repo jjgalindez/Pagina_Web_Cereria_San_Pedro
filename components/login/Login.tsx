@@ -57,7 +57,8 @@ const Login = () => {
                         Correo Electrónico:
                     </label>
                     <input
-                        type="text"
+                        id="email"
+                        type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -71,6 +72,7 @@ const Login = () => {
                         Contraseña:
                     </label>
                     <input
+                        id="password"
                         type="password"
                         placeholder="Password"
                         value={password}
@@ -80,10 +82,8 @@ const Login = () => {
 
                 </div>
 
-
                 <button
                     type="submit"
-                    onClick={handleLogin}
                     disabled={loading}
                     className='w-full bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium'
                 >

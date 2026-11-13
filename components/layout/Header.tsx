@@ -18,6 +18,7 @@ const Header = () => {
                     <Image
                         src="/assets/logo1.png"
                         alt=""
+                        priority
                         width={72}
                         height={72}
                         sizes="(max-width: 639px) 48px, 64px"
@@ -43,7 +44,7 @@ const Header = () => {
                         <IoCartOutline size={24} />
                     </button>
                     <Link
-                        href="/admin/login"
+                        href="/login"
                         className="nav-link hidden sm:inline-flex"
                         aria-label="Acceso a administración"
                     >

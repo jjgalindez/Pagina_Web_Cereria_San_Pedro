@@ -26,7 +26,7 @@ const HERO_DETAILS = [
 
 const HeroSection = () => {
     return (
-        <section className='relative isolate overflow-clip flex min-h-dvh md:min-h-[85vh] text-white'>
+        <section className='relative isolate overflow-clip flex min-h-dvh md:min-h-[85vh] bg-surface-base'>
 
             <Image
                 src="/assets/FondoLimpio.png"

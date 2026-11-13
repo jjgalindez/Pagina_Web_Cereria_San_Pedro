@@ -6,11 +6,11 @@ import CollectionSection from '@/components/sections/CollectionSection';
 
 export default function Home() {
   return (
-    <main className="">
+    <>
       <HeroSection />
       <FeaturesSection />
       <ProcessSection />
       <CollectionSection />
-    </main>
+    </>
   );
 }

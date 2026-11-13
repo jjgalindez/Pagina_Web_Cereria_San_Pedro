@@ -1,7 +1,7 @@
 "use client";
 
-
 import { createClient } from "@/lib/supabase/client";
+import { Category } from "@/types/product";
 import { useState, useEffect } from "react";
 
 const SupabaseUploader = () => {
@@ -10,7 +10,7 @@ const SupabaseUploader = () => {
 
     const [file, setFile] = useState<File | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
-    const [categories, setCategories] = useState<any[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
 
     const [formData, setFormData] = useState({
         nombre: "",
@@ -28,6 +28,11 @@ const SupabaseUploader = () => {
     };
 
     const handleUpload = async () => {
+        // validar que todos los campos estén completos antes de subir
+        if (!formData.nombre || !formData.descripcion || !formData.presentacion || !formData.unidad_paquete || !formData.precio || !formData.categoria_id) {
+            alert("Por favor, complete todos los campos antes de subir.");
+            return;
+        }
         if (!file) return;
 
         try {

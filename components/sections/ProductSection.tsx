@@ -5,11 +5,12 @@ import AppText from "../ui/AppText";
 import { PropsProduct } from "@/interfaces/Products";
 import BackButton from "../ui/BackButton";
 import { Metadata } from "next";
-import { createClient } from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/server";
 
-const getPoduct = async (id: number) => {
 
-  const supabase = createClient();
+const getProduct = async (id: number) => {
+
+  const supabase = await createClient();
 
   const { data, error } = await supabase
     .from('productos')
@@ -28,7 +29,7 @@ const getPoduct = async (id: number) => {
 
 export async function generateMetadata({ params }: PropsProduct): Promise<Metadata> {
   const { id } = await params;
-  const product = await getPoduct(parseInt(id));
+  const product = await getProduct(parseInt(id));
   return {
     title: `${product?.nombre} - Cerería San Pedro`,
     description: `Detalles del producto ${product?.nombre} de Cerería San Pedro`,
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PropsProduct): Promise<Metada
 
 const ProductSection = async ({ params }: PropsProduct) => {
   const { id } = await params;
-  const product = await getPoduct(parseInt(id));
+  const product = await getProduct(parseInt(id));
 
   console.log("Se cargo:", product?.nombre, "con id:", product?.id);
   return (
@@ -53,7 +54,7 @@ const ProductSection = async ({ params }: PropsProduct) => {
             <AppText variant="h3">Precio: ${product.precio}</AppText>
             <BackButton nombre="Volver al catálogo" />
 
-            <AppText variant="description" className="text-center px-40">
+            <AppText variant="description" className="text-center px-4 md:px-20 lg:px-40">
               Deja que la luz de una vela transforme el ambiente convirtiendolo en un
               momento especial, un pequeño detalle puede aportar calidez, tranquilidad y armonía
               a tu espacio, creando ese ambiente perfecto para relajarte, compartir o simplemente
