@@ -45,7 +45,7 @@ const ProductSection = async ({ params }: PropsProduct) => {
     <div>
       <div>
         {product ? (
-          <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-lg shadow-md">
+          <div className="flex flex-col items-center justify-center gap-4 p-4 rounded-lg shadow-md bg-surface-raised border border-default">
             <AppText variant="h2">{product.nombre}</AppText>
             <Image src={product.imagen_url} alt={product.nombre} width={400} height={400} className='aspect-square object-cover rounded-t-xl' />
 

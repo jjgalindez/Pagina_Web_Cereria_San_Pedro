@@ -113,20 +113,20 @@ const SupabaseUploader = () => {
 
 
     return (
-        <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4 border border-gray-200">
+        <div className="p-6 max-w-md mx-auto bg-surface-raised rounded-xl shadow-md space-y-4 border border-default">
             <input
                 type="text"
                 placeholder="Nombre del producto"
                 value={formData.nombre}
                 onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand"
             />
             <input
                 type="text"
                 placeholder="Descripción del producto"
                 value={formData.descripcion}
                 onChange={(e) => setFormData({ ...formData, descripcion: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand"
             />
 
             <select
@@ -137,7 +137,7 @@ const SupabaseUploader = () => {
                         categoria_id: e.target.value
                     })
                 }
-                className="border border-gray-300 rounded-md py-2 px-2"
+                className="border border-default rounded-md py-2 px-2 bg-surface-base text-primary"
             >
                 <option value="">Seleccionar categoria</option>
                 {categories.map((category) => (
@@ -154,7 +154,7 @@ const SupabaseUploader = () => {
                 placeholder="Presentación"
                 value={formData.presentacion}
                 onChange={(e) => setFormData({ ...formData, presentacion: e.target.value })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand"
             />
 
             <h2>Unidades de paquetes</h2>
@@ -163,7 +163,7 @@ const SupabaseUploader = () => {
                 placeholder="Unidades por paquete"
                 value={formData.unidad_paquete}
                 onChange={(e) => setFormData({ ...formData, unidad_paquete: parseInt(e.target.value) })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand"
             />
             <h2>Precio</h2>
             <input
@@ -171,21 +171,21 @@ const SupabaseUploader = () => {
                 placeholder="Precio"
                 value={formData.precio}
                 onChange={(e) => setFormData({ ...formData, precio: parseFloat(e.target.value) })}
-                className="border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                className="border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand"
             />
-            <h2 className="text-xl font-bold text-gray-800">Subir a Supabase</h2>
+            <h2 className="text-xl font-bold text-primary">Subir a Supabase</h2>
 
             <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 cursor-pointer"
+                className="block w-full text-sm text-secondary file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer"
             />
 
             <button
                 onClick={handleUpload}
                 disabled={!file || uploading}
-                className="w-full bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium"
+                className="w-full bg-cta-bg text-cta-text py-2 px-4 rounded-md hover:bg-cta-hover disabled:opacity-50 disabled:cursor-not-allowed transition font-medium"
             >
                 {uploading ? "Subiendo..." : "Subir Producto"}
             </button>

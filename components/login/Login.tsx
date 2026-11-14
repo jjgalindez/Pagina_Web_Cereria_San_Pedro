@@ -38,7 +38,7 @@ const Login = () => {
         <div className='min-h-screen flex items-center justify-center px-4'>
             <form
                 onSubmit={handleLogin}
-                className='w-full max-w-sm rounded-xl shadow-md border p-6 space-y-4'
+                className='w-full max-w-sm rounded-xl shadow-md border border-default bg-surface-raised p-6 space-y-4'
             >
                 <div className='text-center space-y-1'>
                     <AppText variant='h3'>Iniciar Sesión</AppText>
@@ -53,7 +53,7 @@ const Login = () => {
                 )}
 
                 <div className='space-y-1'>
-                    <label htmlFor="email" className='text-sm font-medium text-gray-700'>
+                    <label htmlFor="email" className='text-sm font-medium text-secondary'>
                         Correo Electrónico:
                     </label>
                     <input
@@ -62,13 +62,13 @@ const Login = () => {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='w-full  border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500'
+                        className='w-full  border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand'
                     />
 
                 </div>
 
                 <div className='space-y-1'>
-                    <label htmlFor="password" className='text-sm font-medium text-gray-700'>
+                    <label htmlFor="password" className='text-sm font-medium text-secondary'>
                         Contraseña:
                     </label>
                     <input
@@ -77,7 +77,7 @@ const Login = () => {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className='w-full  border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-emerald-500'
+                        className='w-full  border border-default rounded-md py-2 px-4 bg-surface-base text-primary focus:outline-none focus:ring-2 focus:ring-brand'
                     />
 
                 </div>
@@ -85,7 +85,7 @@ const Login = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className='w-full bg-emerald-600 text-white py-2 px-4 rounded-md hover:bg-emerald-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition font-medium'
+                    className='w-full bg-cta-bg text-cta-text py-2 px-4 rounded-md hover:bg-cta-hover disabled:opacity-50 disabled:cursor-not-allowed transition font-medium'
                 >
                     {loading ? "Logging in..." : "Login"}
                 </button>

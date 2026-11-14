@@ -1,13 +1,13 @@
 
 /* Section */
 .section {
-    --col-bg: var(--color-sand-50, #faf7f2);
-    --col-ink: var(--color-sand-950, #29241f);
-    --col-muted: var(--color-sand-700, #65564a);
-    --col-brand: var(--color-brand-800, #07547d);
-    --col-flame: var(--color-flame-500, #f7a73f);
-    --col-border: var(--color-sand-200, #e6ddd0);
-    --col-surface: var(--color-sand-100, #f3ede3);
+    --col-bg: var(--surface-base);
+    --col-ink: var(--text-primary);
+    --col-muted: var(--text-secondary);
+    --col-brand: var(--accent-brand);
+    --col-flame: var(--accent-flame);
+    --col-border: var(--border-default);
+    --col-surface: var(--surface-raised);
 
     padding-block: clamp(4rem, 8vw, 8rem);
     background: var(--col-bg);
@@ -109,13 +109,13 @@
     background:
         radial-gradient(
             ellipse at 50% 60%,
-            rgb(247 167 63 / 8%),
+            oklch(from var(--accent-flame) l c h / 0.08),
             transparent 65%
         ),
         linear-gradient(
             170deg,
             var(--col-surface),
-            rgb(243 237 227 / 70%)
+            oklch(from var(--surface-raised) l c h / 0.7)
         );
 }
 
@@ -180,7 +180,7 @@
     padding: 1.5rem 2rem;
     border: 1px solid var(--col-border);
     border-radius: var(--radius-lg, 1.75rem);
-    background: rgb(243 237 227 / 60%);
+    background: oklch(from var(--surface-raised) l c h / 0.6);
 }
 
 .footerText {

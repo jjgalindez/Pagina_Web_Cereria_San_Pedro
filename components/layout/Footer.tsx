@@ -3,7 +3,7 @@ import { SITE } from "@/lib/config";
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-950 text-sand-100 py-14">
+    <footer className="bg-footer-bg text-footer-text py-14">
       <div className="container-shell">
         <div className="grid gap-10 md:grid-cols-3">
           <div className="space-y-4">
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 border-t border-brand-700 pt-6 text-sm">
+        <p className="mt-10 border-t border-footer-border pt-6 text-sm">
           © {new Date().getFullYear()} {SITE.name}. Todos los derechos reservados.
         </p>
       </div>

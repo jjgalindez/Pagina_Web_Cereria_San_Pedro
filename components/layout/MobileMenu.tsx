@@ -44,7 +44,7 @@ export default function MobileMenu() {
                 id="mobile-navigation"
                 aria-label="Navegación móvil"
                 hidden={!open}
-                className="absolute inset-x-0 top-full border-b border-sand-200 bg-sand-50/75  p-4 shadow-card"
+                className="absolute inset-x-0 top-full border-b border-header-border bg-header-bg backdrop-blur-md p-4 shadow-card"
             >
                 <div className="container-shell flex flex-col">
                     {NAVIGATION.map((item) => (

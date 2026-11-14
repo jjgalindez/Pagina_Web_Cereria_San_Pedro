@@ -7,10 +7,11 @@ import Link from 'next/link';
 import MobileMenu from './MobileMenu';
 import { NAVIGATION } from '@/lib/config';
 import { UserRound } from 'lucide-react';
+import ThemeToggle from '../theme/ThemeToggle';
 
 const Header = () => {
     return (
-        <header className='sticky top-0 z-40 border-b backdrop-blur-md border-sand-200 bg-sand-50/70'>
+        <header className='sticky top-0 z-40 border-b backdrop-blur-md border-header-border bg-header-bg'>
 
             <div className='container-shell flex min-h-22 items-center justify-between gap-3'>
 
@@ -26,21 +27,21 @@ const Header = () => {
                     />
                     <span className="font-title text-xl font-semibold leading-5 sm:text-2xl">
                         Cerería
-                        <span className="block text-brand-800">San Pedro</span>
+                        <span className="block text-brand">San Pedro</span>
                     </span>
                 </Link>
 
 
                 <nav aria-label="Navegación principal" className='hidden gap-2 md:flex'>
                     {NAVIGATION.map((item) => (
-                        <Link key={item.href} href={item.href} className='inline-flex items-center min-h-11 px-3 py-2 text-sand-950 hover:text-brand-800 hover:underline hover:underline-offset-4 transition-colors'>
+                        <Link key={item.href} href={item.href} className='inline-flex items-center min-h-11 px-3 py-2 text-primary hover:text-brand hover:underline hover:underline-offset-4 transition-colors'>
                             {item.label}
                         </Link>
                     ))}
                 </nav>
 
                 <div className='flex items-center gap-1'>
-                    <button className='relative hover:text-blue-600'>
+                    <button className='relative hover:text-brand'>
                         <IoCartOutline size={24} />
                     </button>
                     <Link
@@ -51,6 +52,7 @@ const Header = () => {
                         <UserRound size={20} aria-hidden="true" />
                     </Link>
                     <MobileMenu />
+                    <ThemeToggle />
                 </div>
 
             </div>

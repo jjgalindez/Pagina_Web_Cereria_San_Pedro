@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { SITE, getSiteUrl } from "@/lib/config";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,14 +57,17 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable}`}
     >
       <body className="flex min-h-dvh flex-col">
+        <ThemeProvider>
         <Header />
         <main id="main-content" tabIndex={-1} className="flex-1">
           {children}
         </main>
         <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

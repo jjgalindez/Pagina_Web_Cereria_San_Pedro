@@ -19,7 +19,7 @@ const Dashboard = () => {
             <div className='w-full flex justify-end'>
                 <button
                     onClick={handleLogout}
-                    className='bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-red-400 transition font-medium'
+                    className='bg-surface-raised border border-default text-primary py-2 px-4 rounded-md hover:bg-red-500 hover:text-white transition font-medium'
                 >
                     Cerrar Sesion
                 </button>

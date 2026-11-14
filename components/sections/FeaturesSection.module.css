@@ -1,13 +1,13 @@
 
 /* Section */
 .section {
-    --ft-bg: var(--color-sand-50, #faf7f2);
-    --ft-surface: var(--color-sand-100, #f3ede3);
-    --ft-ink: var(--color-sand-950, #29241f);
-    --ft-muted: var(--color-sand-700, #65564a);
-    --ft-brand: var(--color-brand-800, #07547d);
-    --ft-border: var(--color-sand-200, #e6ddd0);
-    --ft-flame: var(--color-flame-500, #f7a73f);
+    --ft-bg: var(--surface-base);
+    --ft-surface: var(--surface-raised);
+    --ft-ink: var(--text-primary);
+    --ft-muted: var(--text-secondary);
+    --ft-brand: var(--accent-brand);
+    --ft-border: var(--border-default);
+    --ft-flame: var(--accent-flame);
 
     position: relative;
     padding-block: clamp(4rem, 8vw, 8rem);
@@ -107,8 +107,8 @@
     background-color: var(--ft-surface);
     background-image: linear-gradient(
         145deg,
-        rgb(250 247 242 / 85%),
-        rgb(243 237 227 / 60%)
+        oklch(from var(--surface-base) l c h / 0.85),
+        oklch(from var(--surface-raised) l c h / 0.6)
     );
     backdrop-filter: blur(12px);
 
@@ -136,7 +136,7 @@
     background: linear-gradient(
         135deg,
         var(--ft-brand),
-        rgb(7 84 125 / 80%)
+        oklch(from var(--accent-brand) l c h / 0.8)
     );
     color: var(--ft-bg);
 }

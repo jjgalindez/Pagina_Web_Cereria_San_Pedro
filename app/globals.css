@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+
+/* Le dice a Tailwind v4 que dark: se active cuando exista la clase .dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-brand-50: oklch(0.975 0.012 242);
   --color-brand-100: oklch(0.94 0.025 242);
@@ -86,7 +90,16 @@
   --surface-raised: oklch(0.96 0.01 80);
   --surface-overlay: oklch(0.90 0.015 80);
 
-   /* Bordes */
+  /* Header translúcido */
+  --header-bg: oklch(0.985 0.006 80 / 0.7);
+  --header-border: oklch(0.90 0.015 80);
+
+  /* Footer */
+  --footer-bg: oklch(0.21 0.04 242);
+  --footer-text: oklch(0.96 0.01 80);
+  --footer-border: oklch(0.45 0.10 242);
+
+  /* Bordes */
   --border-default: oklch(0.90 0.015 80);
 
   /* Textos */
@@ -96,9 +109,14 @@
   /* Colores de marca */
   --accent-brand: oklch(0.37 0.085 242);
   --accent-flame: oklch(from #f7a73f l c h);
+
+  /* Botón CTA primario */
+  --cta-bg: oklch(0.37 0.085 242);
+  --cta-text: oklch(0.985 0.006 80);
+  --cta-hover: oklch(0.29 0.065 242);
 }
 
- /* Registros de variables pata Tailwind css */
+ /* Registros de variables para Tailwind css */
 @theme inline {
 
   /* Fondos generales */
@@ -110,6 +128,13 @@
   --color-surface-raised: var(--surface-raised);
   --color-surface-overlay: var(--surface-overlay);
 
+  /* Header y Footer */
+  --color-header-bg: var(--header-bg);
+  --color-header-border: var(--header-border);
+  --color-footer-bg: var(--footer-bg);
+  --color-footer-text: var(--footer-text);
+  --color-footer-border: var(--footer-border);
+
   /* Alias para las clases de texto */
   --color-primary: var(--text-primary);
   --color-secondary: var(--text-secondary);
@@ -119,6 +144,11 @@
   --color-brand: var(--accent-brand);
   --color-flame: var(--accent-flame);
 
+  /* Botón CTA */
+  --color-cta-bg: var(--cta-bg);
+  --color-cta-text: var(--cta-text);
+  --color-cta-hover: var(--cta-hover);
+
   /* Tipografias */
   --font-title: var(--font-cormorant-garamond), Georgia, serif;
   --font-sans: var(--font-geist-sans);
@@ -126,24 +156,33 @@
 
   
 }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --surface-base: oklch(0.145 0.008 80);
+  --surface-raised: oklch(0.185 0.010 80);
+  --surface-overlay: oklch(0.22 0.012 80);
 
-    --surface-base: oklch(0.145 0.008 80);
-    --surface-raised: oklch(0.185 0.010 80);
-    --surface-overlay: oklch(0.22 0.012 80);
+  /* Header translúcido */
+  --header-bg: oklch(0.145 0.008 80 / 0.7);
+  --header-border: oklch(0.26 0.012 80);
 
-    --border-default: oklch(0.26 0.012 80);
+  /* Footer */
+  --footer-bg: oklch(0.10 0.006 80);
+  --footer-text: oklch(0.85 0.008 80);
+  --footer-border: oklch(0.30 0.015 80);
 
-    --text-primary: oklch(0.92 0.008 80);
-    --text-secondary: oklch(0.65 0.015 80);
+  --border-default: oklch(0.26 0.012 80);
+  --text-primary: oklch(0.92 0.008 80);
+  --text-secondary: oklch(0.65 0.015 80);
+  --accent-brand: oklch(0.62 0.10 242);
+  --accent-flame: oklch(from #f7a73f l c h);
 
-    --accent-brand: oklch(0.62 0.10 242);
-    --accent-flame: oklch(from #f7a73f l c h);
-  }
+  /* Botón CTA primario */
+  --cta-bg: oklch(0.62 0.10 242);
+  --cta-text: oklch(0.98 0.006 80);
+  --cta-hover: oklch(0.55 0.10 242);
 }
 
 body {
@@ -162,9 +201,9 @@ body {
 
   .nav-link {
     @apply inline-flex min-h-11 items-center px-3 py-2
-      text-sand-800
-      hover:text-brand-800 hover:underline
-      aria-[current=page]:text-brand-800
+      text-primary
+      hover:text-brand hover:underline
+      aria-[current=page]:text-brand
       aria-[current=page]:underline;
   }
 
