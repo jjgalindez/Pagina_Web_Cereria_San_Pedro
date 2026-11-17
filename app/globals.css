@@ -157,12 +157,13 @@
   
 }
 .dark {
-  --background: #0a0a0a;
+  
   --foreground: #ededed;
 
-  --surface-base: oklch(0.145 0.008 80);
-  --surface-raised: oklch(0.185 0.010 80);
-  --surface-overlay: oklch(0.22 0.012 80);
+  --background: oklch(0.18 0.030 242);     /* ~ #172430 */
+  --surface-base: oklch(0.22 0.035 242);   /* ~ #1e2f3d */
+  --surface-raised: oklch(0.27 0.040 242); /* ~ #293d4e */
+  --surface-overlay: oklch(0.88 0.015 80); /* Fondo claro detrás de la foto (~ marfil) */
 
   /* Header translúcido */
   --header-bg: oklch(0.145 0.008 80 / 0.7);
@@ -173,7 +174,7 @@
   --footer-text: oklch(0.85 0.008 80);
   --footer-border: oklch(0.30 0.015 80);
 
-  --border-default: oklch(0.26 0.012 80);
+  --border-default: oklch(0.35 0.030 242);
   --text-primary: oklch(0.92 0.008 80);
   --text-secondary: oklch(0.65 0.015 80);
   --accent-brand: oklch(0.62 0.10 242);

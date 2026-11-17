@@ -28,21 +28,32 @@ const HeroSection = () => {
     return (
         <section className='relative isolate overflow-clip flex min-h-dvh md:min-h-[85vh] bg-surface-base'>
 
+            {/* MODO CLARO */}
             <Image
                 src="/assets/FondoLimpio.png"
                 fill
                 priority
                 sizes="100vw"
                 alt=""
-                className='object-cover object-[65%_center] md:object-[70%_center] -z-20'
+                className="object-cover object-[65%_center] md:object-[70%_center] -z-20 transition-opacity duration-700 ease-in-out opacity-100 dark:opacity-0"
             />
-
+            {/* MODO OSCURO */}
+            <Image
+                src="/assets/Fondo_Oscuro.png"
+                fill
+                priority
+                sizes="100vw"
+                alt=""
+                className="object-cover object-[65%_center] md:object-[70%_center] -z-20 transition-opacity duration-700 ease-in-out opacity-0 dark:opacity-100"
+            />
+            {/* Overlay adaptativo  */}
             <div
                 aria-hidden="true"
                 className={`
-                    absolute inset-0 -z-10
-                    bg-linear-to-b text-brand-800 to-[rgba(7,40,60,0.50)]
+                    absolute inset-0 -z-10 transition-colors duration-700
+                    bg-linear-to-b text-brand to-[rgba(7,40,60,0.50)]
                     md:bg-linear-to-r md:from-[rgba(7,40,60,0.72)] md:via-[rgba(7,40,60,0.35)] md:to-transparent
+                    dark:to-[rgba(10,10,10,0.75)] dark:md:from-[rgba(10,10,10,0.85)] dark:md:via-[rgba(10,10,10,0.50)]
                 `}
             />
 
