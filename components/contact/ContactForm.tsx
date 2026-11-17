@@ -39,11 +39,10 @@ export default function ContactForm() {
     setErrorMessage('');
 
     try {
-      // Simulación de envío o conexión con API / Supabase
-      // Si prefieres enviar directo por WhatsApp, puedes desglosarlo con encodeURI
+      
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Ejemplo: Redirigir a WhatsApp con el mensaje estructurado (opcional)
+      // Redirigir a WhatsApp con el mensaje estructurado (opcional)
       const textoWhatsApp = encodeURIComponent(
         `*Nuevo mensaje de contacto*\n` +
         `*Nombre:* ${formData.nombre}\n` +
